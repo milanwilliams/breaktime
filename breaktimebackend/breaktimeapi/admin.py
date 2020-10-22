@@ -5,10 +5,10 @@ from django.contrib import admin
 from .models import Shift, CustomUser
 
 
-# class CustomUserAdmin(admin.ModelAdmin):
-#     class Meta:
-#         model = CustomUser
+class CustomUserAdmin(admin.ModelAdmin):
+    class Meta:
+        model = CustomUser
 
 
-admin.site.register(Shift)
-admin.site.register(CustomUser)
+admin.site.register(Shift, CustomUserAdmin)
+# admin.site.register(CustomUser)
