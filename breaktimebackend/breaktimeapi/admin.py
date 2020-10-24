@@ -10,5 +10,6 @@ class CustomUserAdmin(admin.ModelAdmin):
         model = CustomUser
 
 
-admin.site.register(Shift, CustomUserAdmin)
+admin.site.register([Shift])
+admin.site.register
 # admin.site.register(CustomUser)
