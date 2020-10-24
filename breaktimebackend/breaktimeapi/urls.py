@@ -12,8 +12,10 @@ router.register(r'shifts', views.ShiftViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
+    path('user/create/', views.CustomUserCreate.as_view(), name="create_user"),
     path('token/obtain/', views.ObtainTokenPairWithEmployeeView.as_view(),
          # path('token/obtain/', jwt_views.TokenObtainPairView.as_view(),
          name='token_create'),  # override sjwt stock token
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('hello/', views.HelloWorldView.as_view(), name='hello_world')
 ]

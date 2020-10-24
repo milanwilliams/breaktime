@@ -11,6 +11,10 @@ Most of the business logic lies here (`auth.js` ). Most common set up is with a 
 
 `index.js` in reducers essentially passes in feature reducer: auth to create a single top-level reducer passed to store. 
 # Components 
+Where we'll design components that get used in our containers 
 # Containers 
 
 # Hocs 
+
+# Link to or History?
+
