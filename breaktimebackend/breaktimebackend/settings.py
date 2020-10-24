@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'breaktimeapi',
+    'frontend',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
