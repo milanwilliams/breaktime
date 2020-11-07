@@ -24,7 +24,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'username', 'password')
+        fields = ('first_name', 'last_name', 'employee_id', 'username', 'email', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -43,5 +43,5 @@ class ApiTokenObtainPairSerializer(TokenObtainPairSerializer):
         # token = super().get_token(user)
         token = super(ApiTokenObtainPairSerializer, cls).get_token(user)
 
-        token['employee_name'] = user.employee_name
+        token['employee_id'] = user.employee_id
         return token

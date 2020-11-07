@@ -26,4 +26,4 @@ class Shift(models.Model):
 
 
 class CustomUser(AbstractUser):
-    employee_name = models.CharField(max_length=120)
+    employee_id = models.CharField(max_length=120)

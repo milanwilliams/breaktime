@@ -5,7 +5,10 @@ import { signup } from '../actions/auth';
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        name: '',
+        first_name: '',
+        last_name:'',
+        employee_id:'',
+        username: '',
         email: '',
         password: '',
         re_password: ''
@@ -13,7 +16,7 @@ const Signup = ({ signup, isAuthenticated }) => {
 
     const [accountCreated, setAccountCreated] = useState(false);
 
-    const { name, email, password, re_password } = formData;
+    const { first_name,last_name, employee_id, username, email, password, re_password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -21,7 +24,7 @@ const Signup = ({ signup, isAuthenticated }) => {
         e.preventDefault();
 
         if (password === re_password) {
-            signup({ name, email, password, re_password });
+            signup({ first_name, last_name, employee_id, username, email, password, re_password });
             setAccountCreated(true);
         }
     };
@@ -40,9 +43,42 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <input 
                         className='form-control'
                         type='text'
-                        placeholder='Name*'
-                        name='name'
-                        value={name}
+                        placeholder='First Name*'
+                        name='first_name'
+                        value={first_name}
+                        onChange={e => onChange(e)}
+                        required 
+                    />
+                </div>
+                <div className='form-group'>
+                    <input 
+                        className='form-control'
+                        type='text'
+                        placeholder='Last Name*'
+                        name='last_name'
+                        value={last_name}
+                        onChange={e => onChange(e)}
+                        required 
+                    />
+                </div>
+                <div className='form-group'>
+                    <input 
+                        className='form-control'
+                        type='text'
+                        placeholder='Employee ID*'
+                        name='employee_id'
+                        value={employee_id}
+                        onChange={e => onChange(e)}
+                        required 
+                    />
+                </div>
+                <div className='form-group'>
+                    <input 
+                        className='form-control'
+                        type='text'
+                        placeholder='Username*'
+                        name='username'
+                        value={username}
                         onChange={e => onChange(e)}
                         required 
                     />
@@ -66,7 +102,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='password'
                         value={password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='8'
                         required
                     />
                 </div>
@@ -78,7 +114,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='re_password'
                         value={re_password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='8'
                         required
                     />
                 </div>
