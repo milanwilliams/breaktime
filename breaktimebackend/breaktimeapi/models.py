@@ -20,9 +20,32 @@ class Shift(models.Model):
     )
     manager = models.CharField(max_length=255)
     funding = models.CharField(max_length=255)
+    date = models.DateField(auto_now=False,
+                            auto_now_add=False, default="2019-12-14")
+    time_from = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+    time_to = models.TimeField(auto_now=False, auto_now_add=False, null=True)
 
     def _str_(self):
         return(self.name)
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=50)
+    date = models.DateField(auto_now=False,
+                            auto_now_add=False, default="2019-12-14")
+    description = models.CharField(max_length=50)
+    attachments = models.CharField(max_length=50)
+
+
+class Assignment(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+    attachments = models.CharField(max_length=50)
 
 
 class CustomUser(AbstractUser):
