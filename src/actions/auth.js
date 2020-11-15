@@ -86,17 +86,20 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ username, password });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
+        const res = await axios.post("http://127.0.0.1:8000/api/token/obtain/", {username: username, password: password});
+        console.log(res.data);
+
+
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -121,9 +124,6 @@ export const signup = ({ first_name, last_name, employee_id, username, email, pa
     const body = JSON.stringify({ first_name, last_name, employee_id, username, email, password, re_password  }); 
     try {
         //const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
-        console.log(first_name);
-        console.log(last_name);
-        console.log(employee_id);
         const res = await axios.post('http://127.0.0.1:8000/api/user/create/', {first_name: first_name, last_name: last_name, employee_id: employee_id, email: email, username: username, password: password});
         //const res = await axios.post('http://127.0.0.1:8000/api/user/create/', {body});
         dispatch({

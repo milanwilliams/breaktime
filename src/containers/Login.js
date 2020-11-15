@@ -5,22 +5,22 @@ import { login } from '../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
 
-    const { email, password } = formData;
+    const { username, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
 
-        login(email, password);
+        login(username, password);
     };
 
     if (isAuthenticated)
-        return <Redirect to='/' />;
+        return <Redirect to='/' />;  //CHANGE TO LANDING PAGE
     
     return (
         <div className='container mt-5'>
@@ -30,10 +30,10 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className='form-group'>
                     <input 
                         className='form-control'
-                        type='email'
-                        placeholder='Email'
-                        name='email'
-                        value={email}
+                        type='text'
+                        placeholder='Username'
+                        name='username'
+                        value={username}
                         onChange={e => onChange(e)}
                         required
                     />
