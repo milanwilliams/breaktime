@@ -4,18 +4,18 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 
 from .serializers import ShiftSerializer
-from .models import Shift
+from .models import Timesheet
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import ApiTokenObtainPairSerializer, CustomUserSerializer
+from .serializers import ApiTokenObtainPairSerializer, CustomUserSerializer, TimesheetSerializer
 
 
-class ShiftViewSet(viewsets.ModelViewSet):
-    queryset = Shift.objects.all()
-    serializer_class = ShiftSerializer
+class TimesheetViewSet(viewsets.ModelViewSet):
+    queryset = Timesheet.objects.all()
+    serializer_class = TimesheetSerializer
 
 
 class ObtainTokenPairWithEmployeeView(TokenObtainPairView):
