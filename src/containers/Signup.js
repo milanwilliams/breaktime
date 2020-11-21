@@ -5,12 +5,15 @@ import { signup } from '../actions/auth';
 import * as materialUI from '@material-ui/core';
 import * as icons from '@ant-design/icons';
 import team from '../images/breaktime-team.JPG';
-import logo from '../images/breaktime-logo.JPG';
+import logo from '../images/breaktime-logo.png';
 import './Signup.css';
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        name: '',
+        first_name: '',
+        last_name:'',
+        employee_id:'',
+        username:'',
         email: '',
         password: '',
         re_password: ''
@@ -18,7 +21,7 @@ const Signup = ({ signup, isAuthenticated }) => {
 
     const [accountCreated, setAccountCreated] = useState(false);
 
-    const { name, email, password, re_password } = formData;
+    const { first_name,last_name, employee_id, username, email, password, re_password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -26,7 +29,7 @@ const Signup = ({ signup, isAuthenticated }) => {
         e.preventDefault();
 
         if (password === re_password) {
-            signup({ name, email, password, re_password });
+            signup({ first_name, last_name, employee_id, username, email, password, re_password });
             setAccountCreated(true);
         }
     };
@@ -37,7 +40,7 @@ const Signup = ({ signup, isAuthenticated }) => {
         return <Redirect to='login' />;
     
     return (
-        <div >
+        <div className='container-1'>
             <materialUI.ButtonGroup className="social-media-group" variant="text" color="primary" orientation="vertical" aria-label="text primary button group">
                 <a href="https://instagram.com/breaktime">
                     <materialUI.Button>
@@ -67,15 +70,63 @@ const Signup = ({ signup, isAuthenticated }) => {
                 <h1 className="form-header" >User Registration</h1>
                 <form className='form' onSubmit={e => onSubmit(e)}>
                     <div className='form-group'>
-                        <label htmlFor='form-control' class='form-label'>Name</label>
+                        <label htmlFor='form-control' class='form-label'>First Name</label>
+                        <br/>
+                        <materialUI.TextField variant="outlined" className='form-control'>
+                            <input 
+                                className='form-control'
+                                type='text'
+                                placeholder='First Name*'
+                                name='first_name'
+                                value={first_name}
+                                onChange={e => onChange(e)}
+                                required 
+                            />
+                        </materialUI.TextField>
+                    </div>
+                    <br/>
+                    <div className='form-group'>
+                        <label htmlFor='form-control' class='form-label'>Last Name</label>
+                        <br/>
+                        <materialUI.TextField variant="outlined" className='form-control'>
+                            <input 
+                                className='form-control'
+                                type='text'
+                                placeholder='Last Name*'
+                                name='last_name'
+                                value={last_name}
+                                onChange={e => onChange(e)}
+                                required 
+                            />
+                        </materialUI.TextField>
+                    </div>
+                    <br/>
+                    <div className='form-group'>
+                        <label htmlFor='form-control' class='form-label'>Employee ID</label>
+                        <br/>
+                        <materialUI.TextField variant="outlined" className='form-control'>
+                            <input 
+                                className='form-control'
+                                type='text'
+                                placeholder='Employee ID*'
+                                name='employee_id'
+                                value={employee_id}
+                                onChange={e => onChange(e)}
+                                required 
+                            />
+                        </materialUI.TextField>
+                    </div>
+                    <br/>
+                    <div className='form-group'>
+                        <label htmlFor='form-control' class='form-label'>Username</label>
                         <br/><br/>
                         <materialUI.TextField variant="outlined" className='form-control'>
                             <input 
                                 className='form-control'
                                 type='text'
-                                placeholder='Name*'
-                                name='name'
-                                value={name}
+                                placeholder='Username*'
+                                name='username'
+                                value={username}
                                 onChange={e => onChange(e)}
                                 required 
                             />
@@ -84,7 +135,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Email</label>
-                        <br/><br/>
+                        <br/>
                         <materialUI.TextField variant="outlined" className='form-control'>
                             <input id="email-field  "
                                 className='form-control'
@@ -100,7 +151,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Password</label>
-                        <br/><br/>
+                        <br/>
                         <materialUI.TextField variant="outlined" className='form-control'>
                             <input
                                 className='form-control'
@@ -117,7 +168,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Confirm Password</label>
-                        <br/><br/>
+                        <br/>
                         <materialUI.TextField variant="outlined" className='form-control'>
                             <input
                                 className='form-control'
@@ -138,10 +189,11 @@ const Signup = ({ signup, isAuthenticated }) => {
                     type='submit'
                     >Create Account
                     </materialUI.Button>
-                </form>
-                <p className='mt-3' id="sign-in-invitation">
+                <p className='mt-3' >
                     Already have an account? <Link to='/login'>Sign In</Link>
                 </p>
+                </form>
+                
             </materialUI.Box>
         </div>
     );
