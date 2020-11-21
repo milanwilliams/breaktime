@@ -6,8 +6,8 @@ from django.db import models
 # Create your models here.
 
 
-class Shift(models.Model):
-    class ShiftType(models.TextChoices):
+class Timesheet(models.Model):
+    class TimesheetType(models.TextChoices):
         PARTICIPANT = 'P', _('Participant')
         SHELTER = 'V', _('Volunteer')
         STAFF = 'S', _('Staff')
@@ -15,7 +15,7 @@ class Shift(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(
         max_length=1,
-        choices=ShiftType.choices,
+        choices=TimesheetType.choices,
         default=''
     )
     manager = models.CharField(max_length=255)
