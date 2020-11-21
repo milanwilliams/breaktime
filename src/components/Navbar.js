@@ -9,6 +9,7 @@ const navbar = ({ isAuthenticated, logout }) => {
             <a className='nav-link' onClick={logout} href='#!'>Logout</a>
         </li>
     );
+    
 
     const guestLinks = (
         <Fragment>
