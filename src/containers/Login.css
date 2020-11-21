@@ -1,0 +1,129 @@
+.grey-background {
+    /* Gray Background */
+    position: absolute;
+    left: 50%;
+    right: 0%;
+    top: 0%;
+    height: 100%;
+
+    /* Background */
+
+    background: #EEEEEE;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#mission-statement {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: right;
+    margin-right: 62%;
+    color: #00247F;
+}
+
+.form {
+    /* Might need changing to be responsive */
+    position: relative;
+    top: 8%;
+    left: 20%;
+    width: 75%;
+}
+
+.mt-3 {
+    /* Might need changing to be responsive */
+    position: relative;
+    left: 0%;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 500;
+    font-size: large;
+    line-height: 22px;
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.72);
+
+}
+
+
+.social-media-group {
+    float: left;
+    height: auto;  
+}
+
+#img-logo {
+    width: 33%;
+    height: auto; 
+}
+
+#img-team {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 448px;
+    
+}
+
+.social-media-icon {
+    /*Social media icon */
+
+    color: #00247F;
+}
+
+.form-header {
+    /* User Registration */
+
+    position: relative;
+    width: 43.19%;
+    left: 20%;
+    top: 5%;
+
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: xx-large;
+    line-height: 56px;
+
+    color: #00247F;
+}
+
+.form-label {
+
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #000000;
+}
+
+.btn-primary {
+    
+    background-color: #00247F;
+    font-family: 'Comfortaa', cursive; 
+    color: #FFFFFF;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    margin: 6px 0px;
+}
+
+.form-control {
+    position: relative;
+    height: 2%;
+    width: 100%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+

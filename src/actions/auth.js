@@ -32,7 +32,7 @@ export const checkAuthenticated = () => async dispatch => {
         };
     
         const body = JSON.stringify({ token: localStorage.getItem('access') });
-    
+        console.log(body);
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/verify/`, body, config);
     
@@ -86,17 +86,20 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ username, password });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
+        const res = await axios.post("http://127.0.0.1:8000/api/token/obtain/", {username: username, password: password});
+        console.log(res.data);
+
+
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -111,18 +114,18 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
-export const signup = ({ name, email, password, re_password }) => async dispatch => {
+export const signup = ({ first_name, last_name, employee_id, username, email, password, re_password }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     }
 
-    const body = JSON.stringify({ name, email, password, re_password }); 
-
+    const body = JSON.stringify({ first_name, last_name, employee_id, username, email, password, re_password  }); 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
-
+        //const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
+        const res = await axios.post('http://127.0.0.1:8000/api/user/create/', {first_name: first_name, last_name: last_name, employee_id: employee_id, email: email, username: username, password: password});
+        //const res = await axios.post('http://127.0.0.1:8000/api/user/create/', {body});
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data
