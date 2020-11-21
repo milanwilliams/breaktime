@@ -24,6 +24,7 @@ class Timesheet(models.Model):
                             auto_now_add=False, default="2019-12-14")
     time_from = models.TimeField(auto_now=False, auto_now_add=False, null=True)
     time_to = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+    description = models.TextField(default="")
 
     def _str_(self):
         return(self.name)
@@ -48,5 +49,5 @@ class Assignment(models.Model):
     attachments = models.CharField(max_length=50)
 
 
-class CustomUser(AbstractUser):
-    employee_name = models.CharField(max_length=120)
+# class CustomUser(AbstractUser):
+#     employee_name = models.CharField(max_length=120)

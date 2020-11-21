@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Timesheet, CustomUser, Course, Event, Assignment
+from .models import Timesheet, Course, Event, Assignment
+# CustomUser,
 
 
 # class CustomUserAdmin(admin.ModelAdmin):
