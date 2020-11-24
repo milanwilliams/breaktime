@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import Layout from './hocs/Layout';
+import Timesheet from './components/Timesheet';
 
 const App = () => (
     <Provider store={store}>
@@ -23,6 +24,7 @@ const App = () => (
                     <Route exact path='/reset_password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
+                    <Route exact path='/timesheet' component={Timesheet} />
                 </Switch>
             </Layout>
         </Router>
