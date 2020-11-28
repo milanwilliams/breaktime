@@ -24,7 +24,7 @@ const navbar = ({ isAuthenticated, logout }) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to='/'>Auth System</Link>
+            <Link className="navbar-brand" to='/'>Nav Bar</Link>
             <button 
                 className="navbar-toggler"
                 type="button"
