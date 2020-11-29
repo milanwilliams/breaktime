@@ -7,13 +7,14 @@ import * as icons from '@ant-design/icons';
 import team from '../images/breaktime-team.JPG';
 import logo from '../images/breaktime-logo.png';
 import './Signup.css';
+import { NotificationAirlineSeatIndividualSuite } from 'material-ui/svg-icons';
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         first_name: '',
         last_name:'',
         employee_id:'',
-        username:'',
+        username: '',
         email: '',
         password: '',
         re_password: ''
@@ -21,9 +22,12 @@ const Signup = ({ signup, isAuthenticated }) => {
 
     const [accountCreated, setAccountCreated] = useState(false);
 
+
     const { first_name,last_name, employee_id, username, email, password, re_password } = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = e => {
         e.preventDefault();
@@ -72,114 +76,116 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>First Name</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input 
-                                className='form-control'
-                                type='text'
-                                placeholder='First Name*'
-                                name='first_name'
-                                value={first_name}
-                                onChange={e => onChange(e)}
-                                required 
-                            />
+                        <materialUI.TextField 
+                            variant="outlined" 
+                            name = 'first_name'
+                            className='form-control'
+                            type='text'
+                            placeholder='First Name*'
+                            name='first_name'
+                            value={first_name}
+                            onChange={e => onChange(e)}
+                            required
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Last Name</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input 
-                                className='form-control'
-                                type='text'
-                                placeholder='Last Name*'
-                                name='last_name'
-                                value={last_name}
-                                onChange={e => onChange(e)}
-                                required 
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            className='form-control'
+                            type='text'
+                            placeholder='Last Name*'
+                            name='last_name'
+                            value={last_name}
+                            onChange={e => onChange(e)}
+                            required 
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Employee ID</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input 
-                                className='form-control'
-                                type='text'
-                                placeholder='Employee ID*'
-                                name='employee_id'
-                                value={employee_id}
-                                onChange={e => onChange(e)}
-                                required 
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            className='form-control'
+                            type='text'
+                            placeholder='Employee ID*'
+                            name='employee_id'
+                            value={employee_id}
+                            onChange={e => onChange(e)}
+                            required 
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Username</label>
                         <br/><br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input 
-                                className='form-control'
-                                type='text'
-                                placeholder='Username*'
-                                name='username'
-                                value={username}
-                                onChange={e => onChange(e)}
-                                required 
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            className='form-control'
+                            type='text'
+                            placeholder='Username*'
+                            name='username'
+                            value={username}
+                            onChange={e => onChange(e)}
+                            required 
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Email</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input id="email-field  "
-                                className='form-control'
-                                type='email'
-                                placeholder='Email*'
-                                name='email'
-                                value={email}
-                                onChange={e => onChange(e)}
-                                required 
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            id="email-field  "
+                            className='form-control'
+                            type='email'
+                            placeholder='Email*'
+                            name='email'
+                            value={email}
+                            onChange={e => onChange(e)}
+                            required 
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Password</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input
-                                className='form-control'
-                                type='password'
-                                placeholder='Password*'
-                                name='password'
-                                value={password}
-                                onChange={e => onChange(e)}
-                                minLength='6'
-                                required
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            className='form-control'
+                            type='password'
+                            placeholder='Password*'
+                            name='password'
+                            value={password}
+                            onChange={e => onChange(e)}
+                            minLength='8'
+                            required
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Confirm Password</label>
                         <br/>
-                        <materialUI.TextField variant="outlined" className='form-control'>
-                            <input
-                                className='form-control'
-                                type='password'
-                                placeholder='Confirm Password*'
-                                name='re_password'
-                                value={re_password}
-                                onChange={e => onChange(e)}
-                                minLength='6'
-                                required
-                            />
+                        <materialUI.TextField 
+                            variant="outlined"
+                            className='form-control'
+                            type='password'
+                            placeholder='Confirm Password*'
+                            name='re_password'
+                            value={re_password}
+                            onChange={e => onChange(e)}
+                            minLength='8'
+                            required
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/><br/>

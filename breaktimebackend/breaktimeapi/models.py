@@ -11,7 +11,7 @@ class Shift(models.Model):
         PARTICIPANT = 'P', _('Participant')
         SHELTER = 'V', _('Volunteer')
         STAFF = 'S', _('Staff')
-
+    # need foreign key to custom user!
     name = models.CharField(max_length=255)
     type = models.CharField(
         max_length=1,
@@ -26,4 +26,4 @@ class Shift(models.Model):
 
 
 class CustomUser(AbstractUser):
-    employee_name = models.CharField(max_length=120)
+    employee_id = models.CharField(max_length=120)

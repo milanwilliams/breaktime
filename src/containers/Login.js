@@ -25,7 +25,7 @@ const Login = ({ login, isAuthenticated }) => {
     };
 
     if (isAuthenticated)
-        return <Redirect to='/' />;
+        return <Redirect to='/landing' />;  //CHANGE TO LANDING PAGE
     
     return (
         <div className='container-1'>
@@ -58,33 +58,33 @@ const Login = ({ login, isAuthenticated }) => {
                 <h1 className='form-header'>User Login</h1>
                 <form className='form' onSubmit={e => onSubmit(e)}>
                     <div className='form-group'>
-                        <label htmlFor='form-control' class='form-label'>Email</label>
+                        <label htmlFor='form-control' class='form-label'>Username</label>
                         <br/>
-                        <materialUI.TextField label="Username" variant="outlined" className='form-control'>
-                            <input 
-                                className='form-control'
-                                type='text'
-                                name='username'
-                                value={username}
-                                onChange={e => onChange(e)}
-                                required
-                            />
+                        <materialUI.TextField 
+                            variant="outlined" 
+                            className='form-control'
+                            type='text'
+                            name='username'
+                            value={username}
+                            onChange={e => onChange(e)}
+                            required
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>
                     <div className='form-group'>
                         <label htmlFor='form-control' class='form-label'>Password</label>
                         <br/>
-                        <materialUI.TextField label="Password" variant="outlined" className='form-control'>
-                            <input
-                                className='form-control'
-                                type='password'
-                                name='password'
-                                value={password}
-                                onChange={e => onChange(e)}
-                                minLength='6'
-                                required
-                            />
+                        <materialUI.TextField
+                            variant="outlined"
+                            className='form-control'
+                            type='password'
+                            name='password'
+                            value={password}
+                            onChange={e => onChange(e)}
+                            minLength='8'
+                            required
+                        >
                         </materialUI.TextField>
                     </div>
                     <br/>

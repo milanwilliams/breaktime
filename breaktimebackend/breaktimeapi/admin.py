@@ -6,9 +6,11 @@ from .models import Shift, CustomUser
 
 
 class CustomUserAdmin(admin.ModelAdmin):
-    class Meta:
-        model = CustomUser
+    # class Meta:
+    model = CustomUser
 
 
-admin.site.register(Shift, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register([Shift])
+# admin.site.register()
 # admin.site.register(CustomUser)
