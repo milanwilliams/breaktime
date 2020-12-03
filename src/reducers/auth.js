@@ -7,6 +7,8 @@ import {
     AUTHENTICATED_FAIL,
     AUTHENTICATED_SUCCESS,
     USER_LOADED_SUCCESS,
+    ACTIVATION_SUCCESS,
+    ACTIVATION_FAIL,
     USER_LOADED_FAIL
 } from '../actions/types';
 
@@ -56,6 +58,8 @@ export default function(state = initialState, action) {
             }
         case SIGNUP_FAIL:
         case LOGIN_FAIL:
+        case ACTIVATION_SUCCESS:
+        case ACTIVATION_FAIL:
         case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');

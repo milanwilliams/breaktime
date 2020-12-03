@@ -3,14 +3,14 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../actions/auth';
 
-const Activate = (props) => {
+const Activate = ({ verify, match }) => {
     const [verified, setVerified] = useState(false);
 
     const verify_account = e => {
-        const uid = props.match.params.uid;
-        const token = props.match.params.token;
+        const uid = match.params.uid;
+        const token = match.params.token;
 
-        props.verify(uid, token);
+        verify(uid, token);
         setVerified(true);
     };
 
