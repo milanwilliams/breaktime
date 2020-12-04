@@ -141,8 +141,7 @@ export const verify = (uid, token) => async dispatch => {
         }
     }
 
-    const body = JSON.stringify({ uid, token }); 
-    console.log(body);
+    const body = JSON.stringify({ uid, token });
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/activation/`, body, config);
