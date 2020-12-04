@@ -169,8 +169,8 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 DOMAIN = 'localhost:3000'
 SITE_NAME =  'breaktime'
 DJOSER = {
-    'LOGIN_FIELD': 'username',
-    'USER_CREATE_PASSWORD_RETYPE': True,
+    #'LOGIN_FIELD': 'username',
+    #'USER_CREATE_PASSWORD_RETYPE': True,
     'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SEND_CONFIRMATION_EMAIL': True,
@@ -180,5 +180,6 @@ DJOSER = {
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
-    'RESEND_ACTIVATION_EMAIL': True
+    'RESEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': { 'user_create': 'breaktimeapi.serializers.CustomUserSerializer'},
 }
