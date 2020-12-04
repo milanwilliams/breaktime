@@ -15,7 +15,7 @@ const Activate = (props) => {
     };
 
     if (verified)
-        return <Redirect to='/' />
+        return <Redirect to='/login/' />
     return (
         <div className='container'>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',marginTop: '200px' }}>
