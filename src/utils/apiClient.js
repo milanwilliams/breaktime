@@ -10,7 +10,9 @@ const client = axios.create({
 class APIClient {
     async createTimesheetEntry(ts) {
         const timesheet = {
-            name: ts.name
+            name: ts.name,
+            timeTo: ts.timeTo, 
+            timeFrom: ts.timeFrom
         };
         return this.perform("post", "/api/shifts", timesheet);
     }

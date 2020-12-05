@@ -2,48 +2,51 @@ import React, { Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import logo from '../images/breaktime-logo.png';
+import '../containers/App.css';
 
 const navbar = ({ isAuthenticated, logout }) => {
     const authLinks = (
-        <li className="nav-item">
-            <a className='nav-link' onClick={logout} href='#!'>Logout</a>
-        </li>
+        <div>
+            <Fragment>
+                <a className='nav-link' onClick={logout} href='#!'>Logout</a>
+                <Nav.Link className="nav-link" href='/shifts'>Shifts   </Nav.Link>
+                <Nav.Link className="nav-link" href='/summary'>Summary   </Nav.Link>
+            </Fragment>
+        </div>
     );
 
     const guestLinks = (
         <Fragment>
-            <li className="nav-item">
-                <NavLink className="nav-link" exact to='/login'>Login</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" exact to='/signup'>Sign Up</NavLink>
-            </li>
+            <Nav.Link className="nav-link" href='/login'>Login   </Nav.Link>
+            <Nav.Link className="nav-link" href='/signup'>Sign Up   </Nav.Link>
         </Fragment>
     );
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to='/'>Auth System</Link>
-            <button 
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <NavLink className="nav-link" exact to='/'>Home</NavLink>
-                    </li>
-                    { <Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment> }
-                </ul>
-            </div>
-        </nav>
+        <Navbar fixed="top" bg="light" className="navbar navbar-expand-lg navbar-light bg-light">
+            <Nav className="mr-auto">
+                <Navbar.Brand href="/../containers/Home.js"> 
+                </Navbar.Brand>
+                <Nav.Link className="nav-link" href='/'>Home   </Nav.Link>
+                <Nav.Link className="navbar-brand" to='/'>Auth System   </Nav.Link>
+                <Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>
+                <button 
+                    className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                    Adjust Navigation
+                </button>
+            </Nav>            
+        </Navbar>
     );
 };
 

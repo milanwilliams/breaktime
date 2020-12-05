@@ -7,15 +7,15 @@ from django.db import models
 
 
 class Timesheet(models.Model):
-    class TimesheetType(models.TextChoices):
+    '''class TimesheetType(models.TextChoices):
         PARTICIPANT = 'P', _('Participant')
         SHELTER = 'V', _('Volunteer')
-        STAFF = 'S', _('Staff')
+        STAFF = 'S', _('Staff')'''
     # need foreign key to custom user!
     name = models.CharField(max_length=255)
     type = models.CharField(
         max_length=1,
-        choices=TimesheetType.choices,
+        # choices=TimesheetType.choices,
         default=''
     )
     manager = models.CharField(max_length=255)

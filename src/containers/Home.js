@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const home = () => (
     <div className='container'>
         <div className="jumbotron mt-5">

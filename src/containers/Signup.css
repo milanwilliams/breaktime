@@ -1,0 +1,151 @@
+#grey-background {
+    /* Gray Background */
+    position: relative; 
+    top: 0%;
+    right: 0%;
+    height: auto; 
+    width: 50%;
+    /* Background */
+
+    background: #EEEEEE;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#left-half {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+#top-half-2 {
+    height: auto; 
+}
+
+#mission-statement {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: left;
+    margin-right: 62%;
+    color: #00247F;
+}
+
+.form {
+    object-fit: fill;
+    position: relative;
+    
+}
+
+.mt-3 {
+    /* Might need changing to be responsive */
+    position: relative;
+    left: 0%;
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 500;
+    font-size: large;
+    line-height: 22px;
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.72);
+
+}
+
+.social-media-group {
+    float: left; 
+    position: relative; 
+}
+
+#img-logo {
+    position: relative; 
+    width: 33%;
+}
+
+#img-logo-container {
+    position: relative; 
+    
+}
+#logo-mission-container {
+    position: relative; 
+    width: auto; 
+}
+
+#img-team {
+    position: relative; 
+    width: 100%;
+    top: auto; 
+}
+
+#img-team-container {
+    position: relative; 
+    width: 100%;
+    top: 0%;
+}
+
+#form-container {
+    position: relative; 
+}
+
+.social-media-icon {
+    /*Social media icon */
+
+    color: #00247F;
+}
+
+.form-header {
+    /* User Registration */
+
+    position: relative;
+    width: 43.19%;
+    left: 20%;
+    top: 5%;
+
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: xx-large;
+    line-height: 56px;
+
+    color: #00247F;
+}
+
+.form-label {
+
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #000000;
+}
+
+.btn-primary {
+    
+    background-color: #00247F;
+    font-family: 'Comfortaa', cursive; 
+    color: #FFFFFF;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    margin: 6px 0px;
+}
+
+.form-control {
+    position: relative;
+    height: 2%;
+    width: 100%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+
