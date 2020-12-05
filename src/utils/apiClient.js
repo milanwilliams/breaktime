@@ -6,7 +6,6 @@ const client = axios.create({
     baseURL: BASE_URI,
     json: true,
 });
-
 class APIClient {
     async createTimesheetEntry(ts) {
         const timesheet = {

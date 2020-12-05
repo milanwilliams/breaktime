@@ -21,7 +21,8 @@ class TimesheetViewSet(viewsets.ModelViewSet):
         queryset = self.queryset
 
         from_date = self.request.query_params.get('from', None)
-        to_date = self.request.query_params.get('to')
+        # this needs to be here if you're doing an if statement checking if none or not; otherwise default is something vs NOne
+        to_date = self.request.query_params.get('to', None)
         if from_date is not None and to_date is not None:
             queryset = queryset.filter(date__range=(from_date, to_date))
         print("queryset", queryset)
