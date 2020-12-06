@@ -5,7 +5,7 @@ from rest_framework_simplejwt import views as jwt_views
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'shifts', views.ShiftViewSet)
+router.register(r'shifts', views.TimesheetViewSet)
 # router.register(r'locations/<int:organization>', views.LocationList)
 
 # Wire up our API using automatic URL routing.

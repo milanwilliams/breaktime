@@ -3,13 +3,20 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
+import { Layout, Menu, Breadcrumb } from 'antd'
+import { SettingOutlined } from '@ant-design/icons';
+// import '../components/timesheet.css';
+import "antd/dist/antd.css";
+const { SubMenu } = Menu;
+const { Header, Content, Sider, Footer } = Layout;
+
 const navbar = ({ isAuthenticated, logout }) => {
     const authLinks = (
         <li className="nav-item">
             <a className='nav-link' onClick={logout} href='#!'>Logout</a>
         </li>
     );
-    
+
 
     const guestLinks = (
         <Fragment>
@@ -23,28 +30,31 @@ const navbar = ({ isAuthenticated, logout }) => {
     );
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to='/'>Nav Bar</Link>
-            <button 
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+        <>
+            <Menu theme="light" mode="horizontal" onClick={(v) => {
+                // userTracker.setTab(v.key);
+                console.log("setting tab;", v.key)
+            }}
+            // selectedKeys={userTracker.lastTab}
             >
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <NavLink className="nav-link" exact to='/'>Home</NavLink>
-                    </li>
-                    { <Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment> }
-                </ul>
-            </div>
-        </nav>
+
+
+
+                <Menu.Item key="home">
+                    <Link className="navbar-brand" to='/'>Home</Link>
+                </Menu.Item>
+
+                {/* TODO: need to revisit submenu and add view for looking at all settings and accounts etc */}
+                <SubMenu key="account" icon={<SettingOutlined />} title="Account">
+                    <Menu.ItemGroup title="Actions">
+                        <Menu.Item key="actions" >
+                            {<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>}
+                        </Menu.Item>
+                    </Menu.ItemGroup>
+                </SubMenu>
+            </Menu>
+        </>
+
     );
 };
 

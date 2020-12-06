@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from .models import Shift, CustomUser
+from .models import Timesheet, CustomUser
 
 
-class ShiftSerializer(serializers.HyperlinkedModelSerializer):
+class TimesheetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Shift
+        model = Timesheet
         fields = ('name', 'type', 'manager',
-                  'funding')
+                  'funding', 'date', 'time_from', 'time_to')
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -24,7 +24,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'employee_id', 'username', 'email', 'password')
+        fields = ('first_name', 'last_name', 'employee_id',
+                  'username', 'email', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Shift, CustomUser
+from .models import Timesheet, CustomUser
 
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -11,6 +11,6 @@ class CustomUserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register([Shift])
+admin.site.register([Timesheet])
 # admin.site.register()
 # admin.site.register(CustomUser)

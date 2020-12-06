@@ -17,10 +17,10 @@ const initialState = {
     user: null
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
     const { type, payload } = action;
 
-    switch(type) {
+    switch (type) {
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
@@ -28,6 +28,7 @@ export default function(state = initialState, action) {
             }
         case LOGIN_SUCCESS:
             localStorage.setItem('access', payload.access);
+            localStorage.setItem('refresh', payload.refresh)
             return {
                 ...state,
                 isAuthenticated: true,

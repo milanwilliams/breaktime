@@ -6,20 +6,25 @@ from django.db import models
 # Create your models here.
 
 
-class Shift(models.Model):
-    class ShiftType(models.TextChoices):
+class Timesheet(models.Model):
+    '''class TimesheetType(models.TextChoices):
         PARTICIPANT = 'P', _('Participant')
         SHELTER = 'V', _('Volunteer')
-        STAFF = 'S', _('Staff')
+        STAFF = 'S', _('Staff')'''
     # need foreign key to custom user!
     name = models.CharField(max_length=255)
     type = models.CharField(
         max_length=1,
-        choices=ShiftType.choices,
+        # choices=TimesheetType.choices,
         default=''
     )
     manager = models.CharField(max_length=255)
     funding = models.CharField(max_length=255)
+    date = models.DateField(auto_now=False,
+                            auto_now_add=False, default="2019-12-14")
+    time_from = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+    time_to = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+    description = models.TextField(default="")
 
     def _str_(self):
         return(self.name)

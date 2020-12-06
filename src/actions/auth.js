@@ -1,4 +1,7 @@
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
@@ -30,11 +33,11 @@ export const checkAuthenticated = () => async dispatch => {
                 'Content-Type': 'application/json'
             }
         };
-    
+
         const body = JSON.stringify({ token: localStorage.getItem('access') });
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/verify/`, body, config);
-    
+
             if (res.data.code !== 'token_not_valid') {
                 dispatch({
                     type: AUTHENTICATED_SUCCESS
@@ -55,9 +58,118 @@ export const checkAuthenticated = () => async dispatch => {
         });
     }
 };
+axios.interceptors.response.use(response => {
+    return response;
+}, err => {
+    return new Promise((resolve, reject) => {
 
+        const originalReq = err.config;
+        console.log('original', originalReq)
+        console.log("error status", err)
+        if (err.response.status === 404) {
+
+            return <Redirect to='/landing' />;
+        }
+        if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
+            originalReq._retry = true;
+            console.log("trying to refresh")
+            let res = fetch('http://localhost:8000/auth/jwt/refresh', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Device': 'device',
+                    // 'Authentication': localStorage.getItem("token")
+                },
+                redirect: 'follow',
+                referrer: 'no-referrer',
+                body: JSON.stringify({
+                    // token: localStorage.getItem("token"),
+                    refresh: localStorage.getItem("refresh")
+                }),
+            }).then(res => res.json()).then(res => {
+                console.log('response', res);
+                // this.setSession({ access: res.access });
+                localStorage.setItem('access', res.access)
+                // originalReq.headers['Authentication'] = 'JWT ' + res.access;
+                // originalReq.headers['Device'] = "device";
+                const body = JSON.stringify({
+                    token: localStorage.getItem("access"),
+                })
+                console.log("original request here", originalReq)
+                // originalReq.data = body
+                console.log("original request ", originalReq.data)
+                // you were just missing this; you're not setting the data part, you need to set authorization header not request data body 
+                // unsure of difference 
+                originalReq.headers['Authorization'] = `JWT ${localStorage.getItem('access')}`
+
+                return axios(originalReq);
+            });
+
+
+            resolve(res);
+        }
+
+        // throw (err)
+        reject(err);
+    });
+});
+// axios.interceptors.response.use(response => {
+//     return response;
+// }, err => {
+//     return new Promise((resolve, reject) => {
+//         const originalReq = err.config;
+//         if (err.response.status === 404) {
+//             return <Redirect to='/landing' />;  //CHANGE TO LANDING PAGE
+//         }
+//         if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
+//             originalReq._retry = true;
+//             const config = {
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 }
+//             };
+//             console.log(localStorage)
+//             const body = JSON.stringify({
+//                 // token: localStorage.getItem("token"),
+//                 refresh: localStorage.getItem("refresh")
+//             })
+
+//             let res = axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/refresh/`, body, config);
+//             // fetch('http://localhost:8000/auth/jwt/refresh/', {
+//             //     method: 'POST',
+//             //     mode: 'cors',
+//             //     cache: 'no-cache',
+//             //     credentials: 'same-origin',
+//             //     headers: {
+//             //         'Content-Type': 'application/json',
+//             //         'Device': 'device',
+//             //         'Token': localStorage.getItem("token")
+//             //     },
+//             //     redirect: 'follow',
+//             //     referrer: 'no-referrer',
+//             //     body: JSON.stringify({
+//             //         token: localStorage.getItem("token"),
+//             //         refresh_token: localStorage.getItem("refresh_token")
+//             //     }),
+//             // }).
+//             res.then(res => res.data).then(response => {
+//                 console.log("response data from refreshing", response);
+//                 console.log("access token: ", response.access)
+//                 this.setSession({ access: response.access });
+//                 localStorage.setItem('access', response.access)
+//                 // console.log("original request", originalReq)
+//                 // originalReq.headers['JWT'] = response.access;
+//                 // originalReq.headers['refresh'] = res.refresh;
+//             })
+//         }
+//     })
+// })
 export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
+        console.log("LOCAL stroage token here: ", localStorage.getItem('access'))
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -117,7 +229,7 @@ export const signup = ({ first_name, last_name, employee_id, username, email, pa
         }
     }
 
-    const body = JSON.stringify({ first_name, last_name, employee_id, username, email, password, re_password  }); 
+    const body = JSON.stringify({ first_name, last_name, employee_id, username, email, password, re_password });
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
         dispatch({
@@ -161,7 +273,7 @@ export const reset_password = (email) => async dispatch => {
         }
     }
 
-    const body = JSON.stringify({ email }); 
+    const body = JSON.stringify({ email });
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config);
@@ -184,7 +296,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
         }
     }
 
-    const body = JSON.stringify({ uid, token, new_password, re_new_password }); 
+    const body = JSON.stringify({ uid, token, new_password, re_new_password });
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`, body, config);
