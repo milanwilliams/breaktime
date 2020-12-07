@@ -151,7 +151,7 @@ export const login = (username, password) => async dispatch => {
 
     try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
-
+        // const userId = await axios.post()
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data

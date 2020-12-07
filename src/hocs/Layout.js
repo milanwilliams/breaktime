@@ -2,12 +2,15 @@ import React, { useEffect, Fragment } from 'react';
 import Navbar from '../components/Navbar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from '../actions/auth';
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, Breadcrumb, Image } from 'antd'
 import { SettingOutlined } from '@ant-design/icons';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../actions/auth';
 // import '../components/timesheet.css';
+import '../hocs/Layout.css'
 import "antd/dist/antd.css";
+import logo from '../images/breaktime-logo.png';
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider, Footer } = Layout;
 
@@ -44,13 +47,9 @@ const MainLayout = (props) => {
     }, []);
 
     return (
-
         <Layout className="site-layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-                <Navbar />
-
-
-
+                <Navbar></Navbar>
             </Header>
             <Content
                 className="site-layout-background"
@@ -63,12 +62,9 @@ const MainLayout = (props) => {
                 style={{ margin: '24px 16px', padding: 24, marginTop: 80, minHeight: 280 }}
             >
                 {props.children}
-                    can place data here
-                </Content>
+            </Content>
             <Footer style={{ textAlign: 'Right' }}>
-                <div>
-                    footer
-                    </div>
+                <Image width={200} src={logo} alt="Breaktime Logo" />
             </Footer>
 
         </Layout>

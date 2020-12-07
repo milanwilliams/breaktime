@@ -19,7 +19,7 @@ client.interceptors.response.use(
             console.log("error status", err)
             if (err.response.status === 404) {
                 console.log("error 404, ", err.response.status)
-                return <Redirect to='/landing' />;
+                return <Redirect to='/' />; // used to go to landing 
             }
             if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
                 originalReq._retry = true;
@@ -80,10 +80,10 @@ class APIClient {
         return this.perform("post", "/api/shifts", timesheet);
     }
 
-    getTimesheetEntries() {
+    getTimesheetEntries(start, end) {
         try {
 
-            return this.perform('get', `${process.env.REACT_APP_API_URL}/api/shifts/`);
+            return this.perform('get', `${process.env.REACT_APP_API_URL}/api/shifts?from=${start}&to=${end}`);
             // dispatch({
             //     type: USER_LOADED_SUCCESS,
             //     payload: res.data
@@ -100,7 +100,7 @@ class APIClient {
             return this.perform("get", `/api/shifts/${userId}/?from=${from}&to=${to}`);
 
         } catch (e) {
-            return <Redirect to='/landing' />;
+            return <Redirect to='/' />;
         }
     }
     updateTimesheetEntry(ts) {
