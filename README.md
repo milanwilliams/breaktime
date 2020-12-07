@@ -10,13 +10,11 @@ Previously, Breaktime did not have a web application to connect their users and 
 
 ### Goals
  The goals ** of this webapp are to :
-- Have high attendance at weekly seminar
 - Organized location for assignments
 - Digital record of timesheet for payroll
 
 ### Impact
 Thus, this webpp allows Breaktime Associates by :
-- Keeping track of their weekly seminar times
 - Submit weekly assignments
 - Input their shift hours
 
