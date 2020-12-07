@@ -1,5 +1,41 @@
 BREAKTIME WEBAPP DOCUMENTATION
 =============
+# About Breaktime
+
+Breaktime is a 501(c)(3) non-profit working to end young adult homelessness. They operate Boston’s first transitional employment program for young adults experiencing homelessness that helps young adults launch their careers, nurture their talents, and serve their communities. Through this early intervention that focuses on financial and personal empowerment, Breaktime helps prevent long-term chronic homelessness and supports young adults in becoming changemakers.
+
+# Purpose of Webapp
+
+Previously, Breaktime did not have a web application to connect their users and employees, and efficiently keep track of their internal documentation. The need for a webapp is evenmore so important now due to the challenges that came with COVID - 19. 
+
+### Goals
+ The goals ** of this webapp are to :
+- Organized location for assignments
+- Digital record of timesheet for payroll
+
+### Impact
+Thus, this webpp allows Breaktime Associates by :
+- Submit weekly assignments
+- Input their shift hours
+
+# To run webapp
+
+1. Clone the repository locally. 
+    For steps vist, [title](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+2. cd to the cloned folder
+3. Set up backend
+    - cd breaktimebackend
+    - pip install pipenv
+    - pipenv shell
+    - pipenv install django
+    - 
+    - python manage.py runserver
+4. Set up frontend
+    - cd src
+    - yarn install
+    - yarn start
+    Navigate to [title](http://localhost:3000/) if the browser does not open a tab.
+
 # Signup, Login, Authentication
 
 ## Back End
